@@ -38,8 +38,8 @@ if (not sys.argv[0].endswith("par") and
 from . import MetaService
 from . import ttypes
 
-from nebula2.fbthrift.util.remote import Function
-from nebula2.fbthrift.remote import Remote
+from thrift.util.remote import Function
+from thrift.remote import Remote
 
 FUNCTIONS = {
     'createSpace': Function('createSpace', 'MetaService', 'ExecResp', [('CreateSpaceReq', 'req', 'CreateSpaceReq')]),
@@ -88,8 +88,6 @@ FUNCTIONS = {
     'getUserRoles': Function('getUserRoles', 'MetaService', 'ListRolesResp', [('GetUserRolesReq', 'req', 'GetUserRolesReq')]),
     'changePassword': Function('changePassword', 'MetaService', 'ExecResp', [('ChangePasswordReq', 'req', 'ChangePasswordReq')]),
     'heartBeat': Function('heartBeat', 'MetaService', 'HBResp', [('HBReq', 'req', 'HBReq')]),
-    'balance': Function('balance', 'MetaService', 'BalanceResp', [('BalanceReq', 'req', 'BalanceReq')]),
-    'leaderBalance': Function('leaderBalance', 'MetaService', 'ExecResp', [('LeaderBalanceReq', 'req', 'LeaderBalanceReq')]),
     'regConfig': Function('regConfig', 'MetaService', 'ExecResp', [('RegConfigReq', 'req', 'RegConfigReq')]),
     'getConfig': Function('getConfig', 'MetaService', 'GetConfigResp', [('GetConfigReq', 'req', 'GetConfigReq')]),
     'setConfig': Function('setConfig', 'MetaService', 'ExecResp', [('SetConfigReq', 'req', 'SetConfigReq')]),
@@ -131,6 +129,7 @@ FUNCTIONS = {
     'reportTaskFinish': Function('reportTaskFinish', 'MetaService', 'ExecResp', [('ReportTaskReq', 'req', 'ReportTaskReq')]),
     'listCluster': Function('listCluster', 'MetaService', 'ListClusterInfoResp', [('ListClusterInfoReq', 'req', 'ListClusterInfoReq')]),
     'getMetaDirInfo': Function('getMetaDirInfo', 'MetaService', 'GetMetaDirInfoResp', [('GetMetaDirInfoReq', 'req', 'GetMetaDirInfoReq')]),
+    'verifyClientVersion': Function('verifyClientVersion', 'MetaService', 'VerifyClientVersionResp', [('VerifyClientVersionReq', 'req', 'VerifyClientVersionReq')]),
 }
 
 SERVICE_NAMES = ['MetaService', ]

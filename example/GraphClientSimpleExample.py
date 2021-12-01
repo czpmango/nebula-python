@@ -21,7 +21,7 @@ if __name__ == '__main__':
         config.max_connection_pool_size = 2
         # init connection pool
         connection_pool = ConnectionPool()
-        assert connection_pool.init([('127.0.0.1', 9669)], config)
+        assert connection_pool.init([('127.0.0.1', 1774)], config)
 
         # get session from the pool
         client = connection_pool.get_session('root', 'nebula')
@@ -40,18 +40,18 @@ if __name__ == '__main__':
         time.sleep(6)
 
         # insert vertex
-        resp = client.execute(
-            'INSERT VERTEX person(name, age) VALUES "Bob":("Bob", 10), "Lily":("Lily", 9)')
-        assert resp.is_succeeded(), resp.error_msg()
+        # resp = client.execute(
+        #     'INSERT VERTEX person(name, age) VALUES "Bob":("Bob", 10), "Lily":("Lily", 9)')
+        # assert resp.is_succeeded(), resp.error_msg()
 
-        # insert edges
-        resp = client.execute(
-            'INSERT EDGE like(likeness) VALUES "Bob"->"Lily":(80.0);')
-        assert resp.is_succeeded(), resp.error_msg()
+        # # insert edges
+        # resp = client.execute(
+        #     'INSERT EDGE like(likeness) VALUES "Bob"->"Lily":(80.0);')
+        # assert resp.is_succeeded(), resp.error_msg()
 
-        resp = client.execute('FETCH PROP ON person "Bob"')
-        assert resp.is_succeeded(), resp.error_msg()
-        print_resp(resp)
+        # resp = client.execute('FETCH PROP ON person "Bob"')
+        # assert resp.is_succeeded(), resp.error_msg()
+        # print_resp(resp)
 
         bval = ttypes.Value()
         bval.set_bVal(True)
